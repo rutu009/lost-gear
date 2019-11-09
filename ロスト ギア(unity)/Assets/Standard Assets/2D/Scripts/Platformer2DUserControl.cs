@@ -9,7 +9,13 @@ namespace UnityStandardAssets._2D
     {
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
+        Rigidbody2D m_rb2d;
+        Vector3 speed;
 
+        public void Start()
+        {
+            m_rb2d = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        }
 
         private void Awake()
         {
@@ -17,13 +23,15 @@ namespace UnityStandardAssets._2D
         }
 
 
-        private void Update()
+        public void Update()
         {
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+
+            
         }
 
 
